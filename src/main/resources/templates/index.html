@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	<title>Home</title>
+</head>
+
+<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+
+	<h2>Hello!</h2>
+	<h3>Masukkan NIP</h3>
+	
+	<form th:action="@{/pegawai}" method="GET">
+		Nomor Induk Pegawai: <br> <input type="text" name="nip" />
+		<button type="submit">Lihat</button>
+	</form>
+</body>
+
+</html>
