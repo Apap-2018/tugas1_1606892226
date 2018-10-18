@@ -1,32 +1,3 @@
-<!-- <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-	<head>
-    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
-    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-    <script th:src="@{/js/bootstrap.min.js}"></script>
-    <meta charset="UTF-8">
-    <title>Lihat Pegawai</title>	
-    </head>
-    
-    
-	<body>
-		<nav th:replace="fragments/fragment :: navbar"></nav>
-		<h3 th:text= "'NIP : ' + ${pegawai.nip}"></h3>
-		<h3 th:text="'Nama : ' + ${pegawai.nama}"></h3>
-		<h3 th:text="'Tempat Lahir : ' + ${pegawai.tempatLahir}"></h3>
-		<h3 th:text="'Tanggal Lahir : ' + ${pegawai.tanggalLahir}"></h3>
-		<h3 th:text="'Tahun Masuk : ' + ${pegawai.tahunMasuk}"></h3>
-		<h3 th:text="'Nama Instansi : ' + ${pegawai.instansi.nama} + ' - ' + ${pegawai.instansi.provinsi.nama}"></h3>
-		<tbody>
-					<tr th:each="jabatanModel,iterationStatus : *{pegawai.JabatanList}">
-						<td th:text="${iterationStatus.count}"></td>
-						<h3 th:text="'Jabatan ' + ${iterationStatus.count}  + ': ' + ${jabatanModel.nama}"></h3>
-					</tr>
-				</tbody>		
-	</body>
-</html> -->
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -80,7 +51,7 @@
       </tr>
       <tr>
           <td>Gaji</td>
-          <td th:text="'Rp. '+${gajiPegawai}"></td>
+          <td th:text="'Rp. '+${#numbers.formatDecimal(gajiPegawai, 0, 'COMMA',2, 'POINT')}"></td>
       </tr>
   </table>
 

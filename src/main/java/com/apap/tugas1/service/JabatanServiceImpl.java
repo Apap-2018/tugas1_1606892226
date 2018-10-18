@@ -1,5 +1,6 @@
 package com.apap.tugas1.service;
 
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,12 @@ public class JabatanServiceImpl implements JabatanService {
 	public void addJabatan(JabatanModel jabatan) {
 		// TODO Auto-generated method stub
 		jabatanDB.save(jabatan);
+	}
+
+	
+	@Override
+	public Optional<JabatanModel> getJabatanDetailById(Long id){
+		return jabatanDB.findById(id);
 	}
 
 }

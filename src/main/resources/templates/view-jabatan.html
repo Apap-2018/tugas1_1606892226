@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:replace="fragments/fragment :: headerFragment('View Pegawai')"></title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+
+<h1>Detail Jabatan</h1>
+<table class="table">
+    <tr>
+        <td>Nama</td>
+        <td th:text="${jabatan.nama}"></td>
+    </tr>
+    <tr>
+        <td>Deskripsi</td>
+        <td th:text="${jabatan.deskripsi}"></td>
+    </tr>
+    <tr>
+        <td>Gaji Pokok</td>
+        <td th:text="'Rp ' + ${jabatan.gajiPokok}"></td>
+    </tr>
+</table>
+</body>
+</html>

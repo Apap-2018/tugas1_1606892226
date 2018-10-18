@@ -3,9 +3,11 @@ package com.apap.tugas1.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.service.JabatanPegawaiService;
@@ -38,6 +40,13 @@ public class JabatanController {
 		jabatanService.addJabatan(jabatan);
 		return "add";
 	}
+
+	@RequestMapping(value = "/jabatan/view")
+    private String viewJabatan(@RequestParam(value="id") Long id, Model model) {
+        JabatanModel jabatan = jabatanService.getJabatanDetailById(id).get();
+        model.addAttribute("jabatan", jabatan);
+        return "view-jabatan";
+    }
 
 
  
