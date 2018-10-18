@@ -36,7 +36,7 @@ public class JabatanController {
 	}
 	
 	@RequestMapping(value="/jabatan/tambah",method=RequestMethod.POST)
-	private String addPilotSubmit(@ModelAttribute JabatanModel jabatan) {
+	private String addJabatan(@ModelAttribute JabatanModel jabatan) {
 		jabatanService.addJabatan(jabatan);
 		return "add";
 	}
@@ -46,7 +46,13 @@ public class JabatanController {
         JabatanModel jabatan = jabatanService.getJabatanDetailById(id).get();
         model.addAttribute("jabatan", jabatan);
         return "view-jabatan";
-    }
+	}
+	
+	@RequestMapping(value = "/jabatan/hapus", method = RequestMethod.POST)
+	private String hapusJabatanGet(@ModelAttribute JabatanModel jabatan, Model model){
+		jabatanService.deleteJabatan(jabatan);		
+		return "delete";
+	}
 
 
  

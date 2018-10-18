@@ -23,5 +23,11 @@
         <td th:text="'Rp ' + ${jabatan.gajiPokok}"></td>
     </tr>
 </table>
+<hr>
+<form th:action="@{'/jabatan/hapus'}" th:method="POST" >
+    <input type="hidden" name="id" th:value="${jabatan.id}" />
+    <button value="submit" class="btn btn-danger">Hapus</button>
+</form>
+<hr>
 </body>
 </html>

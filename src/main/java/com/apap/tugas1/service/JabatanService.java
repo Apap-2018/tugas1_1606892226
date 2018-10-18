@@ -7,4 +7,7 @@ import com.apap.tugas1.model.JabatanModel;
 public interface JabatanService {
 	void addJabatan(JabatanModel jabatan);
 	Optional <JabatanModel> getJabatanDetailById(Long id);
+	void deleteJabatan(JabatanModel jabatan);
+
+
 }
