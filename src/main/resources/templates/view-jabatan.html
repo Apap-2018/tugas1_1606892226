@@ -29,5 +29,9 @@
     <button value="submit" class="btn btn-danger">Hapus</button>
 </form>
 <hr>
+<form th:action="@{/jabatan/ubah}" method="GET">
+    <input type=hidden name="id" th:value="${jabatan.id}" />
+    <button value="submit" class="btn  btn-primary" >Ubahh</button>
+</form>
 </body>
 </html>
