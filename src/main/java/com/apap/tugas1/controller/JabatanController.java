@@ -66,6 +66,12 @@ public class JabatanController {
 		return "add";
 	}
 
+	@RequestMapping(value ="/jabatan/viewall", method = RequestMethod.GET)
+	private String viewAll(Model model) {
+		model.addAttribute("listJabatan", jabatanService.getListJabatan());
+		return "viewAll-jabatan";		
+	}
+
 
  
 
