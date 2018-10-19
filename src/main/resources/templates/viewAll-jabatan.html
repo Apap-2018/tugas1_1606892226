@@ -2,18 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
  <head>
-  <title th:replace="fragments/fragment :: headerFragment('View All')"></title>
   <object th:include="fragments/fragment :: css" th:remove="tag"></object>
   <object th:include="fragments/fragment :: js" th:remove="tag"></object>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
   <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
  </head>
- <nav th:replace="fragments/fragment :: navbar"></nav>
  
  <body>
+    <nav th:replace="fragments/fragment :: navbar"></nav>
+
   <table id="jabatanTable" class="display">
    <thead>
     <tr>

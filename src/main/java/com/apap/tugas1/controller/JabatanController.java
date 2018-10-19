@@ -48,11 +48,6 @@ public class JabatanController {
         return "view-jabatan";
 	}
 	
-//	 @RequestMapping(value = "/jabatan/hapus", method = RequestMethod.POST)
-//	 private String hapusJabatan(@ModelAttribute JabatanModel jabatan, Model model){
-//	 	jabatanService.deleteJabatan(jabatan);		
-//	 	return "delete";
-//	 }
 
 	@RequestMapping(value = "/jabatan/hapus", method = RequestMethod.POST)
 	private String hapusJabatan(@RequestParam(value = "id") long id, Model model) {
