@@ -18,6 +18,8 @@ import com.apap.tugas1.model.ProvinsiModel;
 import com.apap.tugas1.service.InstansiService;
 import com.apap.tugas1.service.PegawaiService;
 import com.apap.tugas1.service.ProvinsiService;
+import com.apap.tugas1.service.JabatanService;;
+
 
 
 @Controller
@@ -30,9 +32,14 @@ public class PegawaiController {
 	
 	@Autowired
 	private InstansiService instansiService;
+
+	@Autowired
+	private JabatanService jabatanService;
 	
 	@RequestMapping("/")
-	private String index() {
+	private String index(Model model) {
+		List<JabatanModel> archive = jabatanService.getListJabatan();
+		model.addAttribute("listJabatan", archive);
 		return "index";
 	}
 	

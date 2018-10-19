@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.*;
 
 import com.apap.tugas1.model.JabatanModel;
 import com.apap.tugas1.repository.JabatanDB;
@@ -30,6 +31,12 @@ public class JabatanServiceImpl implements JabatanService {
 	@Override
 	public void deleteJabatan( JabatanModel jabatan) {
 		jabatanDB.deleteById(jabatan.getId());
+	}
+
+	@Override
+	public ArrayList<JabatanModel> getListJabatan() {
+		// TODO Auto-generated method stub
+		return (ArrayList<JabatanModel>) jabatanDB.findAll();
 	}
 
 }
