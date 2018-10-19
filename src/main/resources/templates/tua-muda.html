@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	 <title th:replace="fragments/fragment :: headerFragment (title='Data Pegawai Termuda')"></title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+		<h2 th:text="'Data Pegawai Termuda'"></h2>
+		
+		<table style="width:100%">
+		    <tr>
+		        <td>NIP</td>
+		        <td th:text="${termuda.nip}"></td>
+		    </tr>
+		    <tr>
+		        <td>Nama</td>
+		        <td th:text="${termuda.nama}"></td>
+		    </tr>
+		    <tr>
+		        <td>Tempat Lahir</td>
+		        <td th:text="${termuda.tempatLahir}"></td>
+		    </tr>
+		    <tr>
+		        <td>Tanggal Lahir</td>
+		        <td th:text="${termuda.tanggalLahir}"></td>
+		    </tr>
+		    <tr>
+		        <td>Tahun Masuk</td>
+		        <td th:text="${termuda.tahunMasuk}"></td>
+		    </tr>
+		    <tr>
+		        <td>Nama Instansi</td>
+		        <td th:text="${termuda.instansi.nama}+' - '+${termuda.instansi.provinsi.nama}"></td>
+		    </tr>
+		    <tr >
+		        <td>Jabatan</td>
+		        <td >
+		            <ul>
+		                <li th:each="jabatanPegawai : ${termuda.JabatanList}">
+		                    <span th:text="${jabatanPegawai.nama}"></span>
+		                </li>
+		            </ul>
+		        </td>
+		    </tr>
+		</table>
+		
+		<h2 th:text="'Data Pegawai Tertua'"></h2>
+		
+		<table style="width:100%">
+		    <tr>
+		        <td>NIP</td>
+		        <td th:text="${tertua.nip}"></td>
+		    </tr>
+		    <tr>
+		        <td>Nama</td>
+		        <td th:text="${tertua.nama}"></td>
+		    </tr>
+		    <tr>
+		        <td>Tempat Lahir</td>
+		        <td th:text="${tertua.tempatLahir}"></td>
+		    </tr>
+		    <tr>
+		        <td>Tanggal Lahir</td>
+		        <td th:text="${tertua.tanggalLahir}"></td>
+		    </tr>
+		    <tr>
+		        <td>Tahun Masuk</td>
+		        <td th:text="${tertua.tahunMasuk}"></td>
+		    </tr>
+		    <tr>
+		        <td>Nama Instansi</td>
+		        <td th:text="${tertua.instansi.nama}+' - '+${tertua.instansi.provinsi.nama}"></td>
+		    </tr>
+		    <tr >
+		        <td>Jabatan</td>
+		        <td >
+		            <ul>
+		                <li th:each="jabatanPegawai : ${tertua.JabatanList}">
+		                    <span th:text="${jabatanPegawai.nama}"></span>
+		                </li>
+		            </ul>
+		        </td>
+		    </tr>
+		</table>
+
+		
+	</body>
+</html>

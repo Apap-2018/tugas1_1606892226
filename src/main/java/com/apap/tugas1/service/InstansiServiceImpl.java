@@ -3,6 +3,7 @@ package com.apap.tugas1.service;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +20,14 @@ public class InstansiServiceImpl implements InstansiService {
 	private InstansiDB InstansiDB;
 
 	@Override
-	public List<String> getInstansiList() {
-		List<String> listInstansiBersih = new ArrayList();
-		Set<String> setInstansiBersih = new HashSet();
-		for (InstansiModel instansi:InstansiDB.findAll()) {
-			setInstansiBersih.add(instansi.getNama());
-		}
-		for (String instansi:setInstansiBersih) {
-			listInstansiBersih.add(instansi);
-		}
-		return listInstansiBersih;
+	public List<InstansiModel> getInstansiList() {
+		return InstansiDB.findAll();
+	}
+
+	@Override
+	public InstansiModel getInstansiById(long id) {
+		// TODO Auto-generated method stub
+		return InstansiDB.findById(id).get();
 	}
 
 }

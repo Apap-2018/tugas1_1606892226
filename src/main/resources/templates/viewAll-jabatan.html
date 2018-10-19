@@ -1,42 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-<object th:include="fragments/fragment :: css" th:remove="tag"></object>
-<object th:include="fragments/fragment :: js" th:remove="tag"></object>
-<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
-<link rel="stylesheet" th:href="@{/DataTables/datatables.css}">
-<script th:src="@{/DataTables/datatables.js}"></script>
-</head>
-<body>
-	<div id="Content" class="container-full-bg">
-		<div class="container vertical-center" style="padding-top: 32px;">
-			<div style="margin-left: 2rem; padding-right: 2rem;">
-				<h4>Daftar Jabatan</h4>
-				<table class="table table-striped table-bordered table-sm display"
-					id="jabatan">
-					<thead>
-						<tr>
-							<th>No.</th>
-							<th>Nama</th>
-							<th>Deskripsi</th>
-							<th>Gaji Pokok</th>
-						</tr>
-					</thead>
-					<tr th:each="jabatan,iterationStatus : ${listJabatan}">
-						<td th:text="${iterationStatus.count}"></td>
-						<td th:text="${jabatan.nama}"></td>
-						<td th:text="${jabatan.deskripsi}"></td>
-                        <td th:text="'Rp. '+${#numbers.formatDecimal(jabatan.gajiPokok, 0, 'COMMA',2, 'POINT')}"></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-</body>
-<script>
-	$(document).ready(function() {
-		$('#jabatan').DataTable();
-	});
-</script>
+ <head>
+  <title th:replace="fragments/fragment :: headerFragment('View All')"></title>
+  <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+  <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+ </head>
+ <nav th:replace="fragments/fragment :: navbar"></nav>
+ 
+ <body>
+  <table id="jabatanTable" class="display">
+   <thead>
+    <tr>
+     <th>Nama</td>
+     <th>Deskripsi</td>
+     <th>Gaji</td>
+    </tr>
+   </thead>
+   <tbody>
+    <tr th:each="jab : *{listJabatan}">
+     <td th:text="${jab.nama}"></td>
+     <td th:text="${jab.deskripsi}"></td>
+     <td th:text="${jab.gajiPokok}"></td>
+    </tr>
+   </tbody>
+  </table>
+ </body>
 </html>
+ 
+ <script>
+  $(document).ready(function() {
+   $('#jabatanTable').DataTable();
+  });
+ </script>

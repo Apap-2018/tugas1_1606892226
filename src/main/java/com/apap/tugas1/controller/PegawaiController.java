@@ -40,7 +40,9 @@ public class PegawaiController {
 	private String index(Model model) {
 		List<JabatanModel> archive = jabatanService.getListJabatan();
 		model.addAttribute("listJabatan", archive);
-		return "index";
+		List<InstansiModel> listInstansi = instansiService.getInstansiList();
+		model.addAttribute("listInstansi", listInstansi);
+		return "index"; 
 	}
 	
 	
@@ -92,4 +94,30 @@ public class PegawaiController {
 	    return provinsi.getInstansiList(); 
 	}
 	
+	@RequestMapping("/pegawai/tertua-termuda")
+	private String pegawaiTertuaTermuda(@RequestParam(value="idInstansi", required = true) Long id, Model model) {
+		InstansiModel instansi = instansiService.getInstansiById(id);
+		if (instansi==null) {
+			return "haha";
+		}
+		else {
+			List<PegawaiModel> pegawais = instansi.getPegawaiInstansi();
+			if (pegawais.isEmpty()) {
+				return "haha";
+			}
+			PegawaiModel tertua = pegawais.get(0);
+			PegawaiModel termuda = pegawais.get(0);
+			for (PegawaiModel pegawai : pegawais) {
+				if (pegawai.getTanggalLahir().compareTo(tertua.getTanggalLahir())<0) {
+					tertua = pegawai;
+				}
+				if (pegawai.getTanggalLahir().compareTo(termuda.getTanggalLahir())>0) {
+					termuda = pegawai;
+				}
+			}
+			model.addAttribute("tertua", tertua);
+			model.addAttribute("termuda",termuda);
+			return "tua-muda";
+		}
+	}
 }

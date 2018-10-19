@@ -48,10 +48,23 @@ public class JabatanController {
         return "view-jabatan";
 	}
 	
+//	 @RequestMapping(value = "/jabatan/hapus", method = RequestMethod.POST)
+//	 private String hapusJabatan(@ModelAttribute JabatanModel jabatan, Model model){
+//	 	jabatanService.deleteJabatan(jabatan);		
+//	 	return "delete";
+//	 }
+
 	@RequestMapping(value = "/jabatan/hapus", method = RequestMethod.POST)
-	private String hapusJabatanGet(@ModelAttribute JabatanModel jabatan, Model model){
-		jabatanService.deleteJabatan(jabatan);		
-		return "delete";
+	private String hapusJabatan(@RequestParam(value = "id") long id, Model model) {
+        JabatanModel jabatan = jabatanService.getJabatanDetailById(id).get();
+        
+		if (!jabatan.getPegawaiList().isEmpty()) {
+			return "TidakBisaHapus";
+		}
+		else {
+			jabatanService.deleteJabatan(jabatan);
+			return "delete";
+		}
 	}
 
 	@RequestMapping(value="/jabatan/ubah", method = RequestMethod.GET)
