@@ -15,7 +15,7 @@
 	
 	<form th:action="@{/pegawai}" method="GET">
 		Nomor Induk Pegawai: <br> <input type="text" name="nip" />
-		<button type="submit">Lihat</button>
+		<button value="submit" class="btn  btn-primary" >Lihat</button>
 	</form>
 	<td></td>
 	<tr></tr>
@@ -27,7 +27,7 @@
 			  <option th:each="jabatanPegawai : ${listJabatan}" th:value="${jabatanPegawai.id}" th:text="${jabatanPegawai.nama}"></option>
 			</select>
 			<br><br>
-			<button type="submit">Lihat</button>
+			<button value="submit" class="btn  btn-primary" >Lihat</button>
 		</form>
 
 	<h3>Lihat Pegawai Termuda dan Tertua</h3>
@@ -36,7 +36,7 @@
 			  <option th:each="instansiList : ${listInstansi}" th:value="${instansiList.id}" th:text="${instansiList.nama}"></option>
 			</select>
 			<br><br>
-			<button type="submit">Lihat</button>
+			<button value="submit" class="btn  btn-primary" >Lihat</button>
 			</form>
 </body>
 

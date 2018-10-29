@@ -105,8 +105,7 @@ public class PegawaiController {
 			}
 			pegawai.setNip(nip);
 			pegawaiService.addPegawai(pegawai);
-			model.addAttribute("pesan", "Pegawai NIP "+nip+" berhasil ditambahkan");
-	        return "add";
+	        return "add-pegawaiSukses";
 	    }
 		
 		@PostMapping(value = "/pegawai/tambah", params= {"addRow"})
@@ -138,12 +137,12 @@ public class PegawaiController {
 	private String pegawaiTertuaTermuda(@RequestParam(value="idInstansi", required = true) Long id, Model model) {
 		InstansiModel instansi = instansiService.getInstansiById(id);
 		if (instansi==null) {
-			return "haha";
+			return "kosong";
 		}
 		else {
 			List<PegawaiModel> pegawais = instansi.getPegawaiInstansi();
 			if (pegawais.isEmpty()) {
-				return "haha";
+				return "kosong";
 			}
 			PegawaiModel tertua = pegawais.get(0);
 			PegawaiModel termuda = pegawais.get(0);
@@ -262,7 +261,7 @@ public class PegawaiController {
 		pegawai.setNip(nip);
 		pegawaiService.addPegawai(pegawai);
 		model.addAttribute("pesan", "Pegawai NIP "+nip+" berhasil diubah");
-        return "add";
+        return "ubah-pegawaiSukses";
     }
 	
 	@PostMapping(value = "/pegawai/ubah", params= {"addRow"})

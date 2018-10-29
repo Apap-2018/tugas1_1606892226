@@ -1,9 +1,10 @@
 package com.apap.tugas1.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,7 +39,7 @@ public class JabatanController {
 	@RequestMapping(value="/jabatan/tambah",method=RequestMethod.POST)
 	private String addJabatan(@ModelAttribute JabatanModel jabatan) {
 		jabatanService.addJabatan(jabatan);
-		return "add";
+		return "addJabatanSukses";
 	}
 
 	@RequestMapping(value = "/jabatan/view")
@@ -71,12 +72,16 @@ public class JabatanController {
 	@RequestMapping(value = "/jabatan/ubah", method = RequestMethod.POST)
 	private String ubahJabatanSubmit(@ModelAttribute JabatanModel jabatan, Model model) {
 		jabatanService.addJabatan(jabatan);
-		return "add";
+		return "ubah-jabatanSukses";
 	}
 
-	@RequestMapping(value ="/jabatan/viewall", method = RequestMethod.GET)
-	private String viewAll(Model model) {
-		model.addAttribute("listJabatan", jabatanService.getListJabatan());
+	@RequestMapping(value = "/jabatan/viewall")
+	private String viewJabatan(Model model){
+		List <JabatanModel> listOfJabatan = jabatanService.getListJabatan();
+		for (JabatanModel i: listOfJabatan) {
+			i.setSize(i.getList().size());
+		}
+		model.addAttribute("listOfJabatan", listOfJabatan);	
 		return "viewAll-jabatan";		
 	}
 

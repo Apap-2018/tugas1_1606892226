@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:replace="fragments/fragment :: headerFragment('View Pegawai')"></title>
@@ -33,5 +33,62 @@
     <input type=hidden name="id" th:value="${jabatan.id}" />
     <button value="submit" class="btn  btn-primary" >Ubahh</button>
 </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home</title>
+<object th:include="fragments/fragment ::css" th:remove="tag"></object>
+<object th:include="fragments/fragment ::js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	<div class="container-fluid">
+		<br>
+		<h3>Detail Jabatan</h3>
+		<br>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header" th:text="${jabatan.nama}"></div>
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-6">
+								<p>Deskripsi</p>
+							</div>
+							<div class="col-md-6">
+								<p th:text="${jabatan.deskripsi}"></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<p>Gaji Pokok</p>
+							</div>
+							<div class="col-md-6">
+								<p th:text="${jabatan.gajiPokok}"></p>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-2">
+								<form th:action="@{/jabatan/ubah}" method="GET">
+    							<input type=hidden name="id" th:value="${jabatan.id}" />
+    							<button value="submit" class="btn  btn-primary" >Ubah</button>
+								</form>
+							</div>
+							<div class="col-md-2">
+								<form th:action="@{'/jabatan/hapus'}" th:method="POST" >
+    							<input type="hidden" name="id" th:value="${jabatan.id}" />
+    							<button value="submit" class="btn btn-danger">Hapus</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
